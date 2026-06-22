@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clarity — Business Advisory by Mohsen Sharifani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: #1A1A1A;
+      background: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Typography Utility */
+    .text-secondary {
+      color: #6B6157;
+    }
+
+    .text-tertiary {
+      color: #8C7B6E;
+    }
+
+    .text-walnut {
+      color: #3D2314;
+    }
+
+    .text-green {
+      color: #2D5A3D;
+    }
+
+    .small-caps {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E8E2D9;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #1A1A1A;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6B6157;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: #1A1A1A;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #1A1A1A;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 0.4rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 24px;
+      height: 2px;
+      background: #1A1A1A;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 6rem 0;
+    }
+
+    /* Section Labels */
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #2D5A3D;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: #2D5A3D;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+      color: #6B6157;
+      margin-bottom: 2rem;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      background: #2D5A3D;
+      border-radius: 50%;
+    }
+
+    .hero-accent-bar {
+      width: 40px;
+      height: 4px;
+      background: #1A1A1A;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #2D5A3D;
+    }
+
+    .hero-subheadline {
+      font-size: 1.06rem;
+      color: #6B6157;
+      max-width: 700px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: #2D5A3D;
+      color: #F5EDE4;
+      padding: 1rem 1.75rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #1F4029;
+    }
+
+    .btn-secondary {
+      color: #1A1A1A;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      border-bottom: 2px solid #1A1A1A;
+      padding-bottom: 0.25rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      opacity: 0.7;
+    }
+
+    /* Problem Section */
+    .problem-headline {
+      font-size: 2.25rem;
+      line-height: 1.3;
+      margin-bottom: 3rem;
+      max-width: 800px;
+    }
+
+    .problem-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .problem-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #6B6157;
+    }
+
+    /* How We Work */
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: #1A1A1A;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #1A1A1A;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .step-description {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #6B6157;
+    }
+
+    /* Who I Help */
+    .who-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      border: 1px solid #E8E2D9;
+      padding: 2.5rem;
+      background: #F7F3EE;
+    }
+
+    .card-tag {
+      display: inline-block;
+      border: 1px solid #2D5A3D;
+      color: #2D5A3D;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+      color: #1A1A1A;
+    }
+
+    .card p {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #6B6157;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      color: #2D5A3D;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-link:hover {
+      opacity: 0.7;
+    }
+
+    /* Case Studies */
+    .case-studies {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .case-study {
+      border-top: 4px solid #2D5A3D;
+      padding-top: 2rem;
+    }
+
+    .case-study-result {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #1A1A1A;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+
+    .case-study-result-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #2D5A3D;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: #1A1A1A;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .case-study-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .case-study-section {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .case-study-section strong {
+      color: #1A1A1A;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .case-study-section span {
+      color: #6B6157;
+    }
+
+    /* Services */
+    .services-intro {
+      font-size: 1rem;
+      color: #6B6157;
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .service-card {
+      border: 1px solid #E8E2D9;
+      padding: 2rem;
+      background: #F7F3EE;
+    }
+
+    .service-card.premium {
+      grid-column: 1 / -1;
+      border-left: 6px solid #1A1A1A;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    .service-format {
+      font-size: 0.8rem;
+      color: #2D5A3D;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .service-description {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: #6B6157;
+    }
+
+    .services-cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: flex-start;
+    }
+
+    #photo-placeholder {
+      background: #F7F3EE;
+      aspect-ratio: 3 / 4;
+      width: 100%;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8C7B6E;
+      font-size: 1rem;
+      border: 1px solid #E8E2D9;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #2D5A3D;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .about-text p {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #6B6157;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-cta {
+      margin-top: 2.5rem;
+    }
+
+    /* Articles & Speaking */
+    .articles-speaking {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 2.5rem;
+    }
+
+    .articles-speaking > div p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #6B6157;
+      margin-bottom: 1.5rem;
+    }
+
+    .empty-state {
+      border: 2px dashed #E8E2D9;
+      padding: 2.5rem;
+      text-align: center;
+      background: #F7F3EE;
+    }
+
+    .empty-state p {
+      font-size: 0.95rem;
+      color: #8C7B6E;
+      margin-bottom: 1rem;
+    }
+
+    .empty-state a {
+      color: #2D5A3D;
+      font-weight: 500;
+      font-size: 0.9rem;
+      border-bottom: 2px solid #2D5A3D;
+      padding-bottom: 0.25rem;
+    }
+
+    /* Contact Section */
+    .contact-subtext {
+      font-size: 1rem;
+      color: #6B6157;
+      margin-bottom: 3rem;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-details p {
+      font-size: 0.95rem;
+      color: #6B6157;
+      line-height: 1.6;
+    }
+
+    .contact-email {
+      color: #2D5A3D;
+      font-weight: 500;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #1A1A1A;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.75rem;
+      border: 1px solid #E8E2D9;
+      background: #FFFFFF;
+      color: #1A1A1A;
+      font-weight: 300;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2D5A3D;
+      background: #F7F3EE;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #8C7B6E;
+      font-weight: 300;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      margin-top: 1rem;
+    }
+
+    .form-message {
+      display: none;
+      padding: 1.5rem;
+      background: #F7F3EE;
+      border-left: 4px solid #2D5A3D;
+      color: #2D5A3D;
+      font-size: 0.95rem;
+      margin-top: 1.5rem;
+    }
+
+    .form-message.show {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #E8E2D9;
+      padding: 4rem 2rem;
+      margin-top: 6rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #1A1A1A;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: #8C7B6E;
+      line-height: 1.5;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .footer-nav a {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6B6157;
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      color: #1A1A1A;
+    }
+
+    .footer-bottom {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.85rem;
+      color: #8C7B6E;
+    }
+
+    .footer-bottom a {
+      color: #2D5A3D;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-bottom a:hover {
+      opacity: 0.7;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: #FFFFFF;
+        border-bottom: 1px solid #E8E2D9;
+        padding: 1.5rem;
+        gap: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      main {
+        padding: 0 1.5rem;
+      }
+
+      section {
+        padding: 4rem 0;
+      }
+
+      .hero {
+        padding: 3rem 0;
+      }
+
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero-subheadline {
+        font-size: 0.95rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .problem-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .problem-headline {
+        font-size: 1.75rem;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .who-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .case-studies {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card.premium {
+        grid-template-columns: 1fr;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      #photo-placeholder {
+        aspect-ratio: 1 / 1;
+      }
+
+      .articles-speaking {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .footer-nav {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 1rem;
+      }
+
+      .nav-brand {
+        font-size: 1.25rem;
+      }
+
+      main {
+        padding: 0 1rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-subheadline {
+        font-size: 0.9rem;
+      }
+
+      .step-number {
+        font-size: 2.5rem;
+      }
+
+      .case-study-result {
+        font-size: 2rem;
+      }
+
+      .about-text h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-brand">Clarity with Mohsen</div>
+    <button class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#case-studies" class="nav-link">Case Studies</a>
+      <a href="#articles" class="nav-link">Articles</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-accent-bar"></div>
+      <div class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        <span>Business advisory · United States</span>
+      </div>
+      <h1>Minimize the noise. <em>Maximize the signal.</em></h1>
+      <p class="hero-subheadline">You've built something real. Now you're drowning in decisions. We help founders and business owners cut through the chaos — bringing the organizational discipline of the world's best companies to your stage of growth, so you can scale with focus instead of friction.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Book a free call →</button>
+        <a href="#case-studies" class="btn-secondary">See the results</a>
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section id="problem">
+      <div class="section-label">The problem</div>
+      <h2 class="problem-headline">You know you can build something bigger. But you're drowning in what to do next.</h2>
+      <div class="problem-content">
+        <p>Too many ideas, not enough focus. You're making decisions without the right metrics. You're doing everything yourself because you haven't built the team or the processes to delegate.</p>
+        <p>You need someone who has seen how real organizations are built — and can help you take what works at scale and adapt it for where you are right now.</p>
+      </div>
+    </section>
+
+    <!-- How We Work -->
+    <section id="how-we-work">
+      <div class="section-label">How we work</div>
+      <h2 class="problem-headline">A clear path, in three steps.</h2>
+      <p class="services-intro" style="margin-bottom: 1rem;">Most engagements follow the same arc — from understanding where you are today to scaling with confidence.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3 class="step-title">We talk about where you are</h3>
+          <p class="step-description">We listen for what's actually blocking you. Not the symptoms — the root. Most founders already have the answer. They just need someone to help them see it.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3 class="step-title">We build the vision</h3>
+          <p class="step-description">Together we build the systems, team structure, metrics, and processes your business needs to operate at the next level. No bloat. Enterprise discipline, at your scale.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3 class="step-title">You unlock, develop and scale</h3>
+          <p class="step-description">With clarity on what matters and the infrastructure to support it, you grow with conviction — not chaos. We track the metrics that matter and fine-tune strategy as you scale, so every decision moves you forward.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who I Help -->
+    <section id="who-i-help">
+      <div class="section-label">Who we help</div>
+      <h2 class="problem-headline">You belong here.</h2>
+      <div class="who-content">
+        <div class="card">
+          <div class="card-tag">Early founders</div>
+          <h3>Think like a company before you are one</h3>
+          <p>Pre-$500k to $10M+. You have vision but no operational foundation. We get clear on product, market, team, and metrics — so you scale faster because you're not reinventing the wheel at every stage.</p>
+          <a href="#contact" class="card-link">Learn more →</a>
+        </div>
+        <div class="card">
+          <div class="card-tag">Business owners</div>
+          <h3>Scale what you've built, intentionally</h3>
+          <p>$500k–$2M. You've built something real and you're hitting a ceiling. We bring enterprise-grade discipline to your operation — the kind that turns a busy owner into a real CEO.</p>
+          <a href="#contact" class="card-link">Learn more →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="case-studies">
+      <div class="section-label">Case studies</div>
+      <h2 class="problem-headline">Clarity, measured in results.</h2>
+      <p class="services-intro" style="margin-bottom: 1rem;">Two examples of what happens when focus replaces noise.</p>
+      <div class="case-studies">
+        <article class="case-study">
+          <div class="case-study-result">2×</div>
+          <div class="case-study-result-label">Revenue</div>
+          <h3 class="case-study-title">Insurance brokerage: from overwhelmed to doubling revenue</h3>
+          <div class="case-study-content">
+            <div class="case-study-section">
+              <strong>Before</strong>
+              <span>$700k revenue, 8 competing ideas for how to scale, no operational infrastructure, owners working in the business rather than on it.</span>
+            </div>
+            <div class="case-study-section">
+              <strong>The shift</strong>
+              <span>Cut to 2 clear strategies. Built hiring, training, evaluation, and compensation processes. Hired 10 employees with the right structure to support them.</span>
+            </div>
+            <div class="case-study-section">
+              <strong>After</strong>
+              <span>$1.4M revenue in 12 months. Sustainable growth. Operating like a real company.</span>
+            </div>
+          </div>
+        </article>
+        <article class="case-study">
+          <div class="case-study-result">20×</div>
+          <div class="case-study-result-label">User adoption</div>
+          <h3 class="case-study-title">Early-stage startup: from ready-to-grow to 20× user adoption</h3>
+          <div class="case-study-content">
+            <div class="case-study-section">
+              <strong>Before</strong>
+              <span>Strong founders, with a team that hadn't yet been built around the right strengths. Product-market fit was still emerging and user adoption was flat.</span>
+            </div>
+            <div class="case-study-section">
+              <strong>The shift</strong>
+              <span>Identified the opportunity: adding product-market fit expertise to the team. Refined hiring criteria, ran interviews, brought in the right people, and reset the marketing approach.</span>
+            </div>
+            <div class="case-study-section">
+              <strong>After</strong>
+              <span>20× user adoption jump. First product iteration shipped within 3 months of team rebuild. 10 months from start of engagement.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="services-cta" style="margin-top: 3.5rem; text-align: left;">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Could this be your story? Let's talk →</button>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="section-label">Services</div>
+      <h2 class="problem-headline">Every engagement starts with a conversation.</h2>
+      <p class="services-intro">Pricing is discussed once we understand what you actually need — no packages forced on you. Here are the ways we typically work together.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3 class="service-name">Discovery call</h3>
+          <div class="service-format">Free · 30 min</div>
+          <p class="service-description">Your first conversation. No pitch, no pressure. We figure out if there's a fit and what clarity you actually need.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-name">Focus session</h3>
+          <div class="service-format">4 hours</div>
+          <p class="service-description">A deep single-session engagement. One problem, one outcome. Walk in with chaos, walk out with a clear path forward.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-name">Weekly advisory</h3>
+          <div class="service-format">2 hours/week</div>
+          <p class="service-description">Ongoing strategic partnership. Consistent thinking time, accountability, and a thought partner who knows your business.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-name">Monthly retainer</h3>
+          <div class="service-format">2 hours/month + on-call</div>
+          <p class="service-description">Light-touch advisory for businesses that need a steady hand without weekly commitment. Available when it matters.</p>
+        </div>
+        <div class="service-card premium">
+          <div>
+            <h3 class="service-name">Fractional COO/CPO</h3>
+            <div class="service-format">Custom engagement · PREMIUM</div>
+            <p class="service-description">Embedded operational and product leadership. We step in as your part-time COO or CPO — building systems, leading teams, and driving execution while you focus on growth.</p>
+          </div>
+        </div>
+      </div>
+      <div class="services-cta">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Book a discovery call →</button>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-label">About</div>
+      <div class="about-content">
+        <div id="photo-placeholder">Photo</div>
+        <div class="about-text">
+          <h2>Mohsen Sharifani, PhD</h2>
+          <p class="about-label">Founder, Clarity · United States</p>
+          <p>Mohsen Sharifani, PhD, believes the most valuable thing he can offer a client is clarity — on people, processes, and products.</p>
+          <p>Over 14 years at Apple, Dell, and Stitch Fix, Mohsen built teams, developed products, and established the processes and partnerships that allowed organizations to operate at scale. He learned that the difference between companies that grow and companies that stall rarely comes down to ideas. It comes down to focus.</p>
+          <p>Today he brings that organizational discipline to founders and business owners who are ready to grow — helping them cut through the noise, build the right systems, and lead with conviction.</p>
+          <p>Outside of work, Mohsen is drawn to nature, making things with his hands, and the kind of conversations that change how you see a problem.</p>
+          <div class="about-cta">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Work with Mohsen →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles & Speaking -->
+    <section id="articles">
+      <div class="section-label">Articles & speaking</div>
+      <h2 class="problem-headline">Thinking out loud.</h2>
+      <div class="articles-speaking">
+        <div>
+          <h3 class="problem-headline" style="font-size: 1.3rem; margin-bottom: 1rem;">Articles</h3>
+          <p>Writing on strategy, scaling, and the organizational practices that separate good companies from great ones.</p>
+          <div class="empty-state">
+            <p>Articles coming soon</p>
+            <a href="https://www.linkedin.com/in/mohsensharifani" target="_blank">Follow along on LinkedIn →</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="problem-headline" style="font-size: 1.3rem; margin-bottom: 1rem;">Speaking & Workshops</h3>
+          <p>Available for keynotes, workshops, and advisory sessions on scaling, organizational design, and building clarity into the way you operate.</p>
+          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Inquire about speaking →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-label">Contact</div>
+      <h2 class="problem-headline">Let's find your signal.</h2>
+      <p class="contact-subtext">Whether you're ready to start or just exploring, the first conversation is free — and there's no pitch. Tell us what you're working on, and we'll tell you honestly whether we can help.</p>
+      <div class="contact-content">
+        <div class="contact-details">
+          <div>
+            <p><strong>Email</strong></p>
+            <a href="mailto:sharifani@gmail.com" class="contact-email">sharifani@gmail.com</a>
+          </div>
+          <div>
+            <p><strong>Location</strong></p>
+            <p>United States</p>
+          </div>
+          <div>
+            <p><strong>Response</strong></p>
+            <p>Response within 24 hours.</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company">
+            </div>
+            <div class="form-group">
+              <label for="message">What are you working on?</label>
+              <textarea id="message" name="message" placeholder="A sentence or two is plenty — where you are, and where you'd like to be." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit">Send message →</button>
+          </form>
+          <div class="form-message" id="form-message">Thank you — we'll be in touch within 24 hours.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Clarity</div>
+        <p class="footer-tagline">Minimize the noise. Maximize the signal.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#articles">Articles</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-bottom">
+        <p>© 2025 Mohsen Sharifani. United States.</p>
+        <a href="https://www.linkedin.com/in/mohsensharifani" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when link clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Active nav link highlighting based on scroll
+    const navLink = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLink.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Form submission
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      // Clear form
+      document.getElementById('contact-form').reset();
+      
+      // Show thank you message
+      const formMessage = document.getElementById('form-message');
+      formMessage.classList.add('show');
+      
+      // Hide after 5 seconds
+      setTimeout(() => {
+        formMessage.classList.remove('show');
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
