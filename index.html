@@ -1061,7 +1061,7 @@
     <section id="about">
       <div class="section-label">About</div>
       <div class="about-content">
-        <div id="photo-placeholder">Photo</div>
+        <img id="photo-placeholder" src="mohsen.jpg" alt="Mohsen Sharifani">
         <div class="about-text">
           <h2>Mohsen Sharifani, PhD</h2>
           <p class="about-label">Founder, Clarity · United States</p>
@@ -1105,10 +1105,6 @@
       <div class="contact-content">
         <div class="contact-details">
           <div>
-            <p><strong>Email</strong></p>
-            <a href="mailto:sharifani@gmail.com" class="contact-email">sharifani@gmail.com</a>
-          </div>
-          <div>
             <p><strong>Location</strong></p>
             <p>United States</p>
           </div>
@@ -1118,7 +1114,7 @@
           </div>
         </div>
         <div class="contact-form">
-          <form id="contact-form" onsubmit="handleFormSubmit(event)">
+          <form action="https://formspree.io/f/xrewgrve" method="POST">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required>
@@ -1137,7 +1133,6 @@
             </div>
             <button type="submit" class="btn-primary form-submit">Send message →</button>
           </form>
-          <div class="form-message" id="form-message">Thank you — we'll be in touch within 24 hours.</div>
         </div>
       </div>
     </section>
@@ -1202,22 +1197,7 @@
       });
     });
 
-    // Form submission
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      
-      // Clear form
-      document.getElementById('contact-form').reset();
-      
-      // Show thank you message
-      const formMessage = document.getElementById('form-message');
-      formMessage.classList.add('show');
-      
-      // Hide after 5 seconds
-      setTimeout(() => {
-        formMessage.classList.remove('show');
-      }, 5000);
-    }
+
   </script>
 </body>
 </html>
